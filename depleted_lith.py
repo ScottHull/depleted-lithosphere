@@ -24,7 +24,8 @@ test_morb = {
 
 test_mass_fraction = 1.92847
 
-dm = model.calc_depleted_lith(bsp_oxide_wt_pct=test_bsp, morb_oxide_wt_pct=test_morb, morb_mass_fraction=test_mass_fraction)
+dm = model.calc_depleted_lith(bsp_oxide_wt_pct=test_bsp, morb_oxide_wt_pct=test_morb,
+                              morb_mass_fraction=test_mass_fraction, mgo_correction='true')
 print(dm)
 
 

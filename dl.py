@@ -63,14 +63,22 @@ class DepletedLithosphere:
         # this value needs to be removed from BSP
         original_oxide_wt_mgo = oxide_weights['mgo'] / self.MGO_CORRECTION_FACTOR
 
-    def normalize_compositions(self, oxide_wt_pct_unnormalized):
+        return original_oxide_wt_mgo
+
+    def normalize_compositions(self, oxide_wt_pct_unnormalized, mgo_correction='false'):
         normalized = {}
         oxides = list(oxide_wt_pct_unnormalized.keys())
         sum_total = 0
         for i in oxides:
-            sum_total += oxide_wt_pct_unnormalized[i]
+            if i.lower() == 'mgo' and mgo_correction != "false":
+                sum_total += self.calculated_morb_to_original(oxide_weights=oxide_wt_pct_unnormalized)
+            else:
+                sum_total += oxide_wt_pct_unnormalized[i]
         for i in oxides:
-            normalized.update({i: (float(oxide_wt_pct_unnormalized[i]) / float(sum_total)) * 100.0})
+            if i.lower() == 'mgo' and mgo_correction != "false":
+                normalized.update({i: (float(self.calculated_morb_to_original(oxide_weights=oxide_wt_pct_unnormalized)) / float(sum_total)) * 100.0})
+            else:
+                normalized.update({i: (float(oxide_wt_pct_unnormalized[i]) / float(sum_total)) * 100.0})
 
         return normalized
 
@@ -123,10 +131,11 @@ class DepletedLithosphere:
             comp.update({i: 100.0 * (differences[i] / sum_total)})
         return comp
 
-    def calc_depleted_lith(self, bsp_oxide_wt_pct, morb_oxide_wt_pct, morb_mass_fraction):
+    def calc_depleted_lith(self, bsp_oxide_wt_pct, morb_oxide_wt_pct, morb_mass_fraction, mgo_correction='false'):
 
         normalized_bsp_oxide_wt_pct = self.normalize_compositions(oxide_wt_pct_unnormalized=bsp_oxide_wt_pct)
-        normalized_morb_oxide_wt_pct = self.normalize_compositions(oxide_wt_pct_unnormalized=morb_oxide_wt_pct)
+        normalized_morb_oxide_wt_pct = self.normalize_compositions(oxide_wt_pct_unnormalized=morb_oxide_wt_pct,
+                                                                   mgo_correction='true')
         moles_bsp = self.moles_from_oxide_wt_pct(oxide_wt_pct=normalized_bsp_oxide_wt_pct)
         moles_morb_extracted = self.calc_morb_moles_extracted(morb_mass_fraction=morb_mass_fraction,
                                                               normalized_morb_wt_pct=normalized_morb_oxide_wt_pct)
