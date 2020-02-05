@@ -1,3 +1,4 @@
+import pandas as pd
 
 class ExoplanetPocketknifeGlobals:
 
@@ -58,3 +59,22 @@ class ExoplanetPocketknifeGlobals:
             'tio2': (self.atomic_masses['ti'] * self.oxide_cations['tio2']) + (
                     self.atomic_masses['o'] * self.oxide_anions['tio2'])
         }
+
+
+def import_composition(df, row_index):
+    if pd.notnull(df['SiO2'][row_index]):
+        c = {
+            'star': df['Star'][row_index],
+            'sio2': df['SiO2'][row_index],
+            'tio2': df['TiO2'][row_index],
+            'al2o3': df['Al2O3'][row_index],
+            'cr2o3': df['Cr2O3'][row_index],
+            'feo': df['FeO'][row_index],
+            'mgo': df['MgO'][row_index],
+            'cao': df['CaO'][row_index],
+            'na2o': df['Na2O'][row_index]
+        }
+
+        return c
+    else:
+        return None

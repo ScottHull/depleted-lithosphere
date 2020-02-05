@@ -1,4 +1,4 @@
-from .globals import ExoplanetPocketknifeGlobals
+from globals import ExoplanetPocketknifeGlobals
 
 
 class DepletedLithosphere(ExoplanetPocketknifeGlobals):
@@ -15,13 +15,13 @@ class DepletedLithosphere(ExoplanetPocketknifeGlobals):
         oxides = list(oxide_wt_pct_unnormalized.keys())
         sum_total = 0
         for i in oxides:
-            i = oxides[i].lower()
+            i = i.lower()
             if i == 'mgo' and mgo_correction != "false":
                 sum_total += self.calculated_morb_to_original(oxide_weights=oxide_wt_pct_unnormalized)
             else:
                 sum_total += oxide_wt_pct_unnormalized[i]
         for i in oxides:
-            i = oxides[i].lower()
+            i = i.lower()
             if i == 'mgo' and mgo_correction != "false":
                 normalized.update({i: (float(
                     self.calculated_morb_to_original(oxide_weights=oxide_wt_pct_unnormalized)) / float(

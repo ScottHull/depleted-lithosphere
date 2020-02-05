@@ -1,4 +1,4 @@
-from .globals import ExoplanetPocketknifeGlobals
+from globals import ExoplanetPocketknifeGlobals
 
 
 class MORBRecalculation(ExoplanetPocketknifeGlobals):
@@ -53,7 +53,7 @@ class MORBRecalculation(ExoplanetPocketknifeGlobals):
 
     def correct_mgo_in_morb(self, oxide_wt_pct):
 
-        corrected_mgo = oxide_wt_pct['mgo'] * self.MGO_CORRECTION_FACTOR
+        corrected_mgo = oxide_wt_pct['mgo'] / self.MGO_CORRECTION_FACTOR
         removed_mgo = oxide_wt_pct['mgo'] - corrected_mgo
         oxide_wt_pct['mgo'] = corrected_mgo
         renormalized_mgo_oxide_wt_pct = self.normalize_compositions(oxide_wt_pct_unnormalized=oxide_wt_pct)
