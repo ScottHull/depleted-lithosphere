@@ -1,0 +1,101 @@
+0,20,80,1200,0,-2,0
+6,2,4,2
+oxides
+Si          53.49319419530367      5.39386    0
+Mg          0.0     2.71075    0
+Fe          5.690079913527371      .79840    0
+Ca            8.32751597491547      .31431    0
+Al            28.14121659206585      .96680    0
+Na            0.7175986262226012      .40654    0
+1,1,1
+inv251010
+47
+phase plg
+1
+an
+ab
+phase sp
+0
+sp
+hc
+phase opx
+1
+en
+fs
+mgts
+odi
+phase c2c
+0
+mgc2
+fec2
+phase cpx
+1
+di
+he
+cen
+cats
+jd
+phase gt
+0
+py
+al
+gr
+mgmj
+jdmj
+phase cpv
+0
+capv
+phase ol
+1
+fo
+fa
+phase wa
+0
+mgwa
+fewa
+phase ri
+0
+mgri
+feri
+phase il
+0
+mgil
+feil
+co
+phase pv
+0
+mgpv
+fepv
+alpv
+phase ppv
+0
+mppv
+fppv
+appv
+phase cf
+0
+mgcf
+fecf
+nacf
+phase mw
+0
+pe
+wu
+phase qtz
+1
+qtz
+phase coes
+0
+coes
+phase st
+0
+st
+phase apbo
+0
+apbo
+phase ky
+0
+ky
+phase neph
+0
+neph
