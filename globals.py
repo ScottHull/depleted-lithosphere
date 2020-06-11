@@ -4,8 +4,8 @@ class ExoplanetPocketknifeGlobals:
 
     def __init__(self):
         # correction factors
-        self.GALE_MGO = 11.844
-        self.MODEL_EARTH_MGO = 7.652
+        self.GALE_MGO = 7.652
+        self.MODEL_EARTH_MGO = 11.844
         self.MGO_CORRECTION_FACTOR = self.GALE_MGO / self.MODEL_EARTH_MGO
 
         # oxide numbers
